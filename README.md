@@ -13,16 +13,16 @@ I didn't do any front-end display for this one, just felt like working with the 
 
 I attempted to separate the concerns as below.
 
-## Extraction concern (Scrapy):
+### Extraction concern (Scrapy):
 - Scrapy invokes my custom scraper for tide-forecast.com
 - The scraper crawls the front page's table of links & follows each
 
-## Transformation concern (Scrapy pipeline):
+### Transformation concern (Scrapy pipeline):
 - Resulting objects are saved to disk through a JSON pipeline
 - Each thread of the crawler appends to a single JSONlines file
 - TideForecastPipeline structures and transforms the data for storage
 
-## Loading concern (TideForecastChallenge):
+### Loading concern (TideForecastChallenge):
 - JSONlines are loaded the the main thread in list comprehension
 - We frame each item's forecast in a Pandas DataFrame
 - We then group forecasted events & transpose them to columns
@@ -30,7 +30,7 @@ I attempted to separate the concerns as below.
 - Now the data's shorter, immutable, and better suited to analytic queries
 - Serves kind of the same purpose as a SQL temp table
 
-## Analytic concern (TideForecastChallenge):
+### Analytic concern (TideForecastChallenge):
 - We now apply the specific query logic referenced in the requirements
 - We split the tide columns into separate tuples-of-tuples for day & night
 - We can do this by applying a custom lambda to the DataFrame on axis 1 (rows)
