@@ -69,6 +69,7 @@ class TideForecastSpider(Spider):
         item["timezone"] = timezone
         yield item
 
+        
 # Clean up and format each item's scraped data.
 # The crawler process uses this to write the data feed.
 class TideForecastPipeline(object):
@@ -93,6 +94,7 @@ class TideForecastPipeline(object):
         item["forecast"] = forecast
         return item
 
+    
 # This will encapsulate the business logic for operating
 # the spider crawler. Keeps it out of the main method
 class TideForecastChallenge():
