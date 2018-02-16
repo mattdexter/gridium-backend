@@ -1,4 +1,4 @@
-from challenge import TideForecastChallenge
+from backend.challenge import TideForecastChallenge
 
 if __name__ == "__main__":
     tcf = TideForecastChallenge()

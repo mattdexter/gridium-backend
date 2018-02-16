@@ -1,7 +1,7 @@
 import os, json, contextlib
 import pandas as pd
 
-from spiders import TideForecastSpider
+from .spiders import TideForecastSpider
 from scrapy.crawler import CrawlerProcess
 
 SCRAPY_USER_AGENT = os.getenv('SCRAPY_USER_AGENT')
@@ -39,7 +39,7 @@ class TideForecastChallenge():
             "FEED_FORMAT": SCRAPY_FEED_FORMAT,
             "FEED_URI": SCRAPY_FEED_URI,
             "ITEM_PIPELINES": {
-              'pipelines.TideForecastPipeline': 300,
+              'backend.pipelines.TideForecastPipeline': 300,
             }
         })
         process.crawl(TideForecastSpider)
